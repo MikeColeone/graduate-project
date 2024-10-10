@@ -15,6 +15,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 public class User {
+
+    //区分user类别
+    public static final String STUDENT_ROLE = "uaba";
+    public static final String ADMIN_ROLE = "vnev";
+    public static final String TEACHER_ROLE = "rnte";
     @Id
     @CreatedBy
     private String id;

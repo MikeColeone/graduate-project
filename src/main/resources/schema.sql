@@ -1,4 +1,4 @@
-create table if not exists `department`
+create table if not exists `myDepartment`
 (
     id          char(19)    not null primary key,
     name        varchar(20) not null,
@@ -6,7 +6,7 @@ create table if not exists `department`
     update_time datetime    not null default current_timestamp on update current_timestamp
 );
 
-create table if not exists `user`
+create table if not exists `myUser`
 (
     id            char(19)     not null primary key,
     name          varchar(10)  not null,
@@ -26,7 +26,7 @@ create table if not exists `user`
     index (department_id, role, group_number)
 );
 
-create table if not exists `process`
+create table if not exists `myProcess`
 (
     id             char(19)    not null primary key,
     name           varchar(20) not null,
@@ -39,8 +39,8 @@ create table if not exists `process`
     update_time    datetime    not null default current_timestamp on update current_timestamp,
     index (department_id)
 );
-
-create table if not exists `process_score`
+# 数据库服务器和业务服务器可能存在时间差，导致业务变动的时间与数据库时间戳存在差异
+create table if not exists `myProcess_score`
 (
     id          char(19) not null primary key,
     student_id  char(19) not null,
@@ -53,7 +53,7 @@ create table if not exists `process_score`
     unique (process_id, student_id, teacher_id)
 );
 
-create table if not exists `process_file`
+create table if not exists `myProcess_file`
 (
     id          char(19)    not null primary key,
     detail      varchar(60) null,
