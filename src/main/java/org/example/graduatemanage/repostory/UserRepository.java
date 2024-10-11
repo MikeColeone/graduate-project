@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+/* Spring Data JPA 的查询方法不支持静态方法。例如：*/
 
 @Repository
 public interface UserRepository extends CrudRepository<User, String> {

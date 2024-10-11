@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-//洗牌算法 实现随机学生分配
+//洗牌算法 实现随机学生分配服务
 @Service
 public class AssignmentStudentsService {
 
