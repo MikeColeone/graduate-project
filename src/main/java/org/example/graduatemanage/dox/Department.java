@@ -1,9 +1,6 @@
 package org.example.graduatemanage.dox;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.ReadOnlyProperty;
@@ -23,4 +20,6 @@ public class Department {
     private LocalDateTime insertTime;
     @ReadOnlyProperty //自动更新
     private LocalDateTime updateTime;
+
+
 }

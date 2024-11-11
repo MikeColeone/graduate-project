@@ -1,6 +1,7 @@
 package org.example.graduatemanage.repostory;
 
 import org.example.graduatemanage.dox.User;
+import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -18,6 +19,13 @@ public interface UserRepository extends CrudRepository<User, String> {
     select * from myUser u where u.number =:number
     """)
     Optional<User> findUserByNumber(String number);
+
+    //根据账号和密码查询是否存在该用户
+    @Query("""
+    SELECT * from myUser u where number=:number and password=:password
+    """)
+    User findUserByNumberAndPassword(String number,String password);
+
     //拿到某专业所有学生 将学生随机分配给教师
     @Query("""
     select * from myUser u where u.department_id=:depId and u.role=:role
@@ -34,5 +42,6 @@ public interface UserRepository extends CrudRepository<User, String> {
     select * from myUser u where u.department_id=:depId and u.role=:role;
     """)
     List<User> findTeachersOneDepartment(String depId,String role);
+
 
 }

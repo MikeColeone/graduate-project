@@ -5,6 +5,7 @@ spring:
     password: 2022212829
     hikari:
       maximum-pool-size: 1
+#      限制数据库最大连接数
   sql:
     init:
       mode: always

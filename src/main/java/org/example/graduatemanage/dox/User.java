@@ -17,14 +17,14 @@ import java.time.LocalDateTime;
 public class User {
 
     //区分user类别
-    public static final String STUDENT_ROLE = "uaba";
-    public static final String ADMIN_ROLE = "vnev";
-    public static final String TEACHER_ROLE = "rnte";
+    public static final String STUDENT_ROLE = "bala";
+    public static final String ADMIN_ROLE = "venv";
+    public static final String TEACHER_ROLE = "race";
     @Id
     @CreatedBy
     private String id;
     private String name;
-    private String number;
+    private String number;  //账号
     private String password;
     private String description;
     private String departmentId;
