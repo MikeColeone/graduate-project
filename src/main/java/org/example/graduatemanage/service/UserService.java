@@ -31,10 +31,6 @@ public class UserService {
         return userRepository.findStudentsAll(depId,role);
     }
 
-    //实现学生分配
-    public void assignment(Map<User, List<User>> teacherStudentMap, List<User> students){
-        ShuffleAlgorithm.assignStudents(teacherStudentMap,students);
-    }
 
 
     /*登陆时查询是否存在用户*/

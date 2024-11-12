@@ -11,7 +11,9 @@ import lombok.*;
 @RequiredArgsConstructor
 @NoArgsConstructor
 //继承自非受检异常
-public class XException extends RuntimeException {
+public class
+
+XException extends RuntimeException {
     private Code code;
     private int number; //单独的业务码
     private String message;  //随之伴随的异常信息
