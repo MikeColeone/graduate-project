@@ -11,6 +11,5 @@ public class PasswordEncodingConfig {
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
-
     }
 }
