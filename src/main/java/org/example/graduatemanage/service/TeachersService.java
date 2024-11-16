@@ -10,6 +10,7 @@ import org.example.graduatemanage.repostory.UserRepository;
 import org.springframework.stereotype.Service;
 import org.example.graduatemanage.exception.Code;
 import org.example.graduatemanage.dox.Process;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,6 @@ import java.util.Optional;
 @Slf4j
 public class TeachersService {
     private final UserRepository userRepository;
-
     private final ProcessRepository processRepository;
     //读取表格并写入数据库
     private void upLoadFiles(List<User> users){
@@ -79,24 +79,26 @@ public class TeachersService {
     }
     //重置指定账号密码
     //不要验证旧密码
-    private String changePasseword(String number,String password){
-        Optional<User> user = userRepository.findUserByNumber(number);
-
-        if (user.isEmpty()) {
-            log.debug("所查用户为空，无法重置密码");
-            throw new XException(Code.USER_NOT_FOUND);  // 抛出自定义异常
-        }
-
-        User userFound = user.get();
-        userRepository.save(userFound);
-        log.debug("密码重置成功");
-
-        return user.get().getPassword();
+    //先查到所有对象所有数据 在进行修改 防止将不包含的值复为空
+    private String changePassword(String number, String password) {
+        userRepository.findUserByNumber(number).ifPresentOrElse(
+                result -> {
+                    result.setPassword(password);
+                    userRepository.save(result);
+                },
+                () -> { throw new XException(Code.USER_NOT_FOUND); } // 如果用户不存在
+        );
+        return password;
     }
 
+    //创建过程
+    @Transactional
+    public Process createProcess(Process process) {return processRepository.save(process);}
+    //删除过程
+    @Transactional
+    public void removeProcess(Process process) {processRepository.delete(process);}
+    //查询自己的学生
+    public List<User> findMyStudents(String tid,String did){return userRepository.findStudentByTeacherId(tid,did);}
+    //创建过程子项
 
-    public Process createProcess(Process process) {
-
-        return processRepository.save(process);
-    }
 }

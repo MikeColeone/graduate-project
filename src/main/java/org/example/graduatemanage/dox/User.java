@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.ReadOnlyProperty;
+import org.springframework.data.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -33,8 +31,12 @@ public class User {
     private String student;
     private String teacher;
     @ReadOnlyProperty
+
+//    也可以由数据库生成时间
+//    @CreatedDate
     private LocalDateTime createTime;
     @ReadOnlyProperty
+//    @LastModifiedDate
     private LocalDateTime insertTime;
 
 }
