@@ -31,11 +31,11 @@ public class AdminService {
         userRepository.updatePasswordByAccount(account,encodePassword);
     }
 
-    //用户
+    //添加用户
     public void addUser(User user){
         userRepository.save(user);
     }
-    
+
 
 
     //删除空的专业

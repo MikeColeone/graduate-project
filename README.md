@@ -60,9 +60,9 @@
 ```xml
 spring:
   datasource:
-    url: 'jdbc:mysql://120.46.159.231:3306/2022212829?createDatabaseIfNotExist=true'
-    username: 2022212829
-    password: 2022212829
+    url: 'jdbc:mysql://120.46.159.231:3306/**********?createDatabaseIfNotExist=true'
+    username: **********
+    password: **********
     hikari:
       maximum-pool-size: 1
   sql:
@@ -83,12 +83,37 @@ logging:
 #自定义密钥
 my:
   secretkey: OIioun9
+```
+```xml
+<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.8</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>prepare-agent</goal>
+                <goal>report</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
 
 ```
-
+```xml
+mvn test
+mvn jacoco:report
+```
 ## Installation
 
 ## Updates
+- 2024-11-16
+  - 添加测试覆盖率查询插件 jacoco 报告路径：build/reports/jacoco/test/html/index.html。
+  - 测试覆盖率必须达到80%
+
+
+- 2024-11-15
+  - 管理员服务逻辑
 - 2024-11-13
   - 读取文件分析出学生名单应该在前端完成 直接将数据通过持久层到数据库就行了
   - 添加拦截器 并注册拦截器
