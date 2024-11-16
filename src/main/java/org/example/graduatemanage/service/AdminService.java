@@ -38,10 +38,12 @@ public class AdminService {
 
 
 
+
     //删除空的专业
     @Transactional
     public void removeDepartment(String did){
-        if(userRepository.countByDepartment(did)>0){
+        if(userRepository.countByDepartmentId(did)>0){
+            //此时专业仍有用户存在
             throw XException.builder()
                     .number(Code.ERROR)
                     .message("无法删除有学生的专业")

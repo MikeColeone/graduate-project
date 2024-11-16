@@ -44,7 +44,8 @@ public interface UserRepository extends CrudRepository<User, String> {
     List<User> findTeachersOneDepartment(String depId,String role);
 
 
-    int countByDepartment(String did);
 
     void updatePasswordByAccount(String account, String encodePassword);
+
+    int countByDepartmentId(String did);
 }
