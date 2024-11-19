@@ -3,9 +3,11 @@ package org.example.graduatemanage.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.graduatemanage.components.ShuffleAlgorithm;
+import org.example.graduatemanage.dox.ProcessScore;
 import org.example.graduatemanage.dox.User;
 import org.example.graduatemanage.exception.XException;
 import org.example.graduatemanage.repostory.ProcessRepository;
+import org.example.graduatemanage.repostory.ScoresRepository;
 import org.example.graduatemanage.repostory.UserRepository;
 import org.springframework.stereotype.Service;
 import org.example.graduatemanage.exception.Code;
@@ -34,6 +36,7 @@ import java.util.Optional;
 public class TeachersService {
     private final UserRepository userRepository;
     private final ProcessRepository processRepository;
+    private final ScoresRepository scoresRepository;
     //读取表格并写入数据库
     private void upLoadFiles(List<User> users){
         //将学生上传数据库
@@ -100,5 +103,10 @@ public class TeachersService {
     //查询自己的学生
     public List<User> findMyStudents(String tid,String did){return userRepository.findStudentByTeacherId(tid,did);}
     //创建过程子项
+
+
+    //拿到教师打的的所有分数
+    public List<ProcessScore> findMyStudentsScore(String tid,String did){return scoresRepository.findStudentsScoresById(tid);
+    }
 
 }
