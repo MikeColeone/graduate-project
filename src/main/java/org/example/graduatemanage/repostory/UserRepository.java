@@ -45,6 +45,8 @@ public interface UserRepository extends CrudRepository<User, String> {
 
 
 
+
+    //更新密码服务
     void updatePasswordByNumber(String account, String encodePassword);
 
     int countByDepartmentId(String did);
